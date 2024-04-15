@@ -1,11 +1,11 @@
 import React from 'react'
-import {BsCart3,BsGrid1X2Fill, BsFillArchiveFill,BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsBoxArrowRight  } from "react-icons/bs"
+import {BsCart3,BsFillPersonVcardFill,BsStarFill,BsClockHistory ,BsGrid1X2Fill, BsFillArchiveFill,BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsBoxArrowRight,BsArrowsAngleContract   } from "react-icons/bs"
 export function Sidebar({openSidebar, openSidebarToggle}) {
   return (
     <aside className={`sidebar ${openSidebar ? "sidebar-responsive":""}`}>
         <div className='sidebar-title'>
             <div className="sidebar-brand">
-                <BsCart3 className="icon-header"/>SHOP
+                <BsArrowsAngleContract  className="icon-header"/>SKILLSWAP
             </div>
             <span className="icon close_icon" onClick={openSidebarToggle}>X</span>
         </div>
@@ -18,32 +18,33 @@ export function Sidebar({openSidebar, openSidebarToggle}) {
             </li>
             <li className='sidebar-list-item' >
                 <a href='' className='sidebar-link'>
-                    <BsFillArchiveFill className='icon'/>Products
+                    <BsFillArchiveFill className='icon'/>Learn
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href='' className='sidebar-link'>
-                    <BsFillGrid3X3GapFill className='icon'/>Categories
+                    <BsStarFill  className='icon'/>Favorites
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href='' className='sidebar-link'>
-                    <BsPeopleFill className='icon'/>Customers
+                    <BsClockHistory  className='icon'/>History
                 </a>
             </li>
+
             <li className='sidebar-list-item'>
                 <a href='' className='sidebar-link'>
-                    <BsListCheck className='icon'/>Inventory
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href='' className='sidebar-link'>
-                    <BsMenuButtonWideFill className='icon'/>Reports
+                    <BsMenuButtonWideFill className='icon'/>Report
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href='' className='sidebar-link'>
                     <BsFillGearFill className='icon'/>Settings
+                </a>
+            </li>
+            <li className='sidebar-list-item'>
+                <a href='' className='sidebar-link'>
+                    <BsFillPersonVcardFill className='icon'/>Profile
                 </a>
             </li>
             <li className='logout sidebar-list-item'>
