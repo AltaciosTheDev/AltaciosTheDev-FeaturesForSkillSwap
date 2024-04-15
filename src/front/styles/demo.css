@@ -1,3 +1,4 @@
+/* layout always starts with this */
 .dashboard{
     margin: 0;
     padding: 0;
@@ -7,43 +8,49 @@
     height: 100vh;
 }
 
+/* every little icon in the sidebar and header */
 .icon{
     vertical-align: middle;
     line-height: 1px;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
+/* icon for the logo */
 .icon-header{
     vertical-align: middle;
     line-height: 1px;
-    font-size: 26px;
+    font-size: 1.7rem;
 }
 
-.icon, .icon_header{
-    margin-right: 5px;
+/* space separating each icon with its text */
+.icon, .icon-header{
+    margin-right: 0.5rem;
 }
 
+/* stars display none, because it only appears when screen is small */
 .close_icon{
-    color: red;
+    font-size: 1.5rem;
     margin-left: 30px;
     margin-top: 10px;
     cursor: pointer;
+    display: none;
+
 }
 
+/* initial grid full screen */
 .grid-container{
     display: grid;
-    grid-template-columns: 260px 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 3fr;
+    grid-template-columns: 230px 1fr;
+    grid-template-rows: 60px 1fr;
     grid-template-areas:
-        "sidebar header header header"
-        "sidebar main main main";
+        "sidebar header"
+        "sidebar main";
     height: 100vh;
 
 }
 
-
-
 /* Header */
+/* basic code for a section and selecting where it will be placed */
 .header{
     grid-area: header;
     height: 60px;
@@ -54,21 +61,29 @@
     box-shadow: 0 6px 7px -3px rgba(0,0,0,0.35);
 }
 
+.header-right{
+    margin-left: auto;
+}
+
+/* at first, menu icon is none */
 .menu-icon{
     display: none;
 }
 /* End Header */
 
+
 /* Sidebar */
+/* no hace falta que esto sea display flex si todos son block elements */
 .sidebar{
     grid-area: sidebar;
     height: 100%;
     background-color: #263043;
     overflow-y: auto;
-    transition: all 0.5s;
-    -webkit-transition: all 0,5s;
+    transition: all 0.5s ease;
+/* como sidebar no es flex, automaticamente los div abarcan todo el espacio */
 }
 
+/* como esto si es flex, abarca solo el espacio que necesita */
 .sidebar-title{
     display: flex;
     justify-content: space-between;
@@ -77,57 +92,67 @@
     margin-bottom: 30px;
 }
 
-.sidebar-title > span{
-    display: none;
-}
-
+/* only needs margin, font size and font weight */
 .sidebar-brand{
     margin-top: 15px;
     font-size: 20px;
     font-weight: 700;
 }
 
+/* always take care of padding and list style for lists by default */
 .sidebar-list{
     padding: 0;
     list-style-type: none;
 }
 
+/* sepatation and size */
 .sidebar-list-item{
     padding: 20px;
     font-size: 18px;
 }
 
+/* hover effects */
 .sidebar-list-item:hover{
     background-color: rgba(255,255,255,0.2);
     cursor: pointer;
 }
 
+/* link */
 .sidebar-list-item > .sidebar-link{
     text-decoration: none;
     color: #9e9ea4;
 }
 
+/* separate the logout more to the bottom */
+.logout{
+    margin-top: 50px;
+}
+
+/* class that will be activated only with TRUE on openSidebar  */
 .sidebar-responsive{
     display: inline !important;
     position: absolute;
     z-index: 12 !important;
-
+    width: 230px;
 }
 /* End Sidebar */
 
 /* MAIN*/
+/* just color and padding */
 .main-container{
     grid-area: main;
     overflow-y: auto;
-    padding: 20px 20px;
+    padding: 20px;
     color: rgba(255,255,255,0.95)
 }
 
+/* dashboard title */
 .main-title{
     display: flex;
     justify-content: space-between;
 }
 
+/* cards manage their own grid distribution */
 .main-cards{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -135,14 +160,28 @@
     margin: 15px 0;
 }
 
+/* each card by default in grid, all space of cell*/
 .card{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
 
 }
+
+/* row align center and separate */
+.card-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* size for card icon */
+.card-inner > .card_icon{
+    font-size: 25px;
+}
+
 
 .card:first-child{
     background-color: #2962ff;
@@ -160,16 +199,7 @@
     background-color: #d50000;
 }
 
-.card-inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.card-inner > .card_icon{
-    font-size: 25px;
-}
-
+/* 2 column grid with 300px height */
 .charts{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -179,46 +209,57 @@
 }
 /* MAIN*/
 
+@media screen and (max-width: 1200px){
+    .card-title{
+        font-size: 18px;
+    }
+}
+
 /* Medium <= 992px */
 @media screen and (max-width: 992px){
+    /* main grid converts to 1 column, eliminating sidebar column. */
     .grid-container{
         grid-template-columns: 1fr;
-        grid-template-rows: 0.2fr 3fr;
+        /* new layout distribution */
         grid-template-areas:
             "header"
             "main";
     }
 
+    /* this are css that will lose effect at 993px */
     .sidebar{
         display: none;
+        /* defaulted initial*/
     }
 
+    /* will be visible until limit */
     .menu-icon{
         display: inline;
+        transition: opacity 0.5s ease;
     }
 
-    .sidebar-title > span{
+    /* will be visible until limit */
+    .close_icon{
         display: inline;
     }
+
+    .main-cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
 }
 
 /* Small <= 768px */
 @media screen and (max-width: 768px){
+    /* below 768px cards will be 1 row */
     .main-cards{
         grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 0;
     }
 
+    /* below 768 pixels, charts will be 1 row */
     .charts{
         grid-template-columns: 1fr;
-        margin-top: 30px;
     }
 }
 
-/* extra small <= 576px */
-@media screen and(max-width: 576px){
-    .header-left{
-        display: none;
-    }
-}

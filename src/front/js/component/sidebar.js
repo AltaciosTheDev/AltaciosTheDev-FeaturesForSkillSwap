@@ -1,11 +1,11 @@
 import React from 'react'
-import {BsCart3,BsGrid1X2Fill, BsFillArchiveFill,BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from "react-icons/bs"
+import {BsCart3,BsGrid1X2Fill, BsFillArchiveFill,BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsBoxArrowRight  } from "react-icons/bs"
 export function Sidebar({openSidebar, openSidebarToggle}) {
   return (
     <aside className={`sidebar ${openSidebar ? "sidebar-responsive":""}`}>
         <div className='sidebar-title'>
             <div className="sidebar-brand">
-                <BsCart3 className="icon_header"/>SHOP
+                <BsCart3 className="icon-header"/>SHOP
             </div>
             <span className="icon close_icon" onClick={openSidebarToggle}>X</span>
         </div>
@@ -44,6 +44,11 @@ export function Sidebar({openSidebar, openSidebarToggle}) {
             <li className='sidebar-list-item'>
                 <a href='' className='sidebar-link'>
                     <BsFillGearFill className='icon'/>Settings
+                </a>
+            </li>
+            <li className='logout sidebar-list-item'>
+                <a href='' className='sidebar-link'>
+                    <BsBoxArrowRight className='icon'/>Logout
                 </a>
             </li>
         </ul>
